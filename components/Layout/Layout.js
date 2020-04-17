@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     height: "100vh",
     backgroundRepeat: "no-repeat",
-    backgroundSize: "auto",
+    backgroundSize: "cover",
     backgroundPosition: "center center",
     backgroundBlendMode: "overlay",
     background: "#242132",

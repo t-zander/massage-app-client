@@ -21,7 +21,7 @@ const ClientInfo = ({ name, surname, phoneNumber, handleInputChange }) => {
   const classes = useStyles();
 
   const onInputChange = prop => e => {
-    handleInputChange(e.target.value, prop);
+    handleInputChange(prop, e.target.value);
   };
 
   return (

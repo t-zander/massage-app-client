@@ -2,14 +2,11 @@ import React from "react";
 import { withApollo } from "../lib/apollo";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
-import { Typography, Box, Divider, Icon } from "@material-ui/core";
+import { Typography, Box, Icon } from "@material-ui/core";
 import Layout from "../components/Layout/Layout";
 import { makeStyles } from "@material-ui/styles";
-import PriceIcon from "@material-ui/icons/AttachMoney";
-import Healing from "@material-ui/icons/Healing";
 import clsx from "clsx";
-/* import PriceIcon from "@material-ui/icons/AttachMoney";
- */
+
 const GET_COMMENTS = gql`
   {
     comments {
@@ -43,16 +40,20 @@ const useStyles = makeStyles(theme => ({
   },
   icon: {
     fontSize: 26,
-    color: theme.palette.text.primary,
     marginRight: 8
+  },
+  hoverable: {
+    transition: ".4s",
+    cursor: "pointer",
+    "&:hover": {
+      color: theme.palette.primary.light
+    }
   }
 }));
 
 const Home = () => {
   const classes = useStyles();
-  const { data, loading, error } = useQuery(GET_COMMENTS);
 
-  console.log({ data, loading, error });
   return (
     <Layout backgroundUrl="/img/background.png">
       <Box className={classes.banner} textAlign="center">
@@ -62,24 +63,21 @@ const Home = () => {
         <Typography variant="body1">Ваша молодость в наших руках!</Typography>
       </Box>
       <Box className={classes.results}>
-        <Typography variant="body1" align="center">
-          <Icon
-            className={clsx(classes.icon, "fa fa-hand-holding-usd")}
-            color="error"
-          />{" "}
-          Демократичные цены
-        </Typography>
-        <Typography variant="body1">
-          <Icon className={clsx(classes.icon, "fa fa-child")} color="error" />{" "}
-          Улучшение самочуствия
-        </Typography>
-        <Typography variant="body1">
-          <Icon
-            className={clsx(classes.icon, "fa fa-smile-wink")}
-            color="error"
-          />{" "}
-          Уютная атмосфера
-        </Typography>
+        <Box display="flex" alignItems="baseline" className={classes.hoverable}>
+          <Icon className={clsx(classes.icon, "fa fa-hand-holding-usd")} />
+          <Typography variant="body1" align="center">
+            Демократичные цены
+          </Typography>
+        </Box>
+        <Box display="flex" alignItems="baseline" className={classes.hoverable}>
+          <Icon className={clsx(classes.icon, "fa fa-child")} />
+          <Typography variant="body1">Улучшение самочуствия</Typography>
+        </Box>
+
+        <Box display="flex" alignItems="baseline" className={classes.hoverable}>
+          <Icon className={clsx(classes.icon, "fa fa-smile-wink")} />
+          <Typography variant="body1">Уютная атмосфера</Typography>
+        </Box>
       </Box>
     </Layout>
   );

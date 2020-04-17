@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/styles";
 import NavbarLink from "./NavbarLink/NavbarLink";
+import Link from "next/link";
 
 const useStyles = makeStyles(theme => ({
   root: {

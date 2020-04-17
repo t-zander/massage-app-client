@@ -20,4 +20,4 @@ const Checkin = props => {
 
 Checkin.propTypes = {};
 
-export default withApollo(Checkin);
+export default Checkin;
