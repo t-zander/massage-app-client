@@ -1,10 +1,10 @@
-import { Container, Hidden, IconButton } from "@material-ui/core";
+import { Container, Hidden, IconButton, Theme } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { makeStyles } from "@material-ui/styles";
-import React from "react";
+import React, { FC } from "react";
 import NavbarLink from "./NavbarLink/NavbarLink";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
   header: {
     padding: theme.spacing(2, 0),
     position: "relative"
@@ -23,7 +23,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Navbar = ({ onOpenDrawer }) => {
+interface NavBarProps {
+  onOpenDrawer: () => void;
+}
+
+const Navbar: FC<NavBarProps> = ({ onOpenDrawer }) => {
   const classes = useStyles();
 
   return (
@@ -55,7 +59,5 @@ const Navbar = ({ onOpenDrawer }) => {
     </header>
   );
 };
-
-Navbar.propTypes = {};
 
 export default Navbar;

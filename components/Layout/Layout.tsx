@@ -1,13 +1,12 @@
-import { Drawer, IconButton, Container } from "@material-ui/core";
+import { Container, Drawer, IconButton, Theme } from "@material-ui/core";
 import CloseMenuIcon from "@material-ui/icons/Close";
 import { makeStyles } from "@material-ui/styles";
-import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { FC, ReactElement, useState } from "react";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import NavbarLink from "../Navbar/NavbarLink/NavbarLink";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     minHeight: "100vh",
     backgroundRepeat: "no-repeat",
@@ -33,7 +32,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Layout = ({ children, backgroundUrl }) => {
+interface LayoutProps {
+  children: ReactElement | ReactElement[];
+  backgroundUrl: string;
+}
+
+const Layout: FC<LayoutProps> = ({ children, backgroundUrl }) => {
   const classes = useStyles();
   const [isDrawerOpen, setDrawerOpen] = useState(false);
 
@@ -71,7 +75,7 @@ const Layout = ({ children, backgroundUrl }) => {
           <hr style={{ width: "100%" }} />
         </div>
       </Drawer>
-      <Navbar className={classes.appBar} onOpenDrawer={onOpenDrawer} />
+      <Navbar onOpenDrawer={onOpenDrawer} />
 
       <Container maxWidth="lg" className={classes.content}>
         {children}
@@ -79,11 +83,6 @@ const Layout = ({ children, backgroundUrl }) => {
       <Footer />
     </div>
   );
-};
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-  backgroundUrl: PropTypes.string.isRequired
 };
 
 export default Layout;

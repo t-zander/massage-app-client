@@ -1,12 +1,12 @@
-import React, { useCallback, useMemo } from "react";
-import moment from "moment";
-import { Box, makeStyles } from "@material-ui/core";
+import React, { FC, useCallback, useMemo } from "react";
+import moment, { Moment } from "moment";
+import { Box, makeStyles, Theme } from "@material-ui/core";
 import clsx from "clsx";
 import Date from "../Date/Date";
 import { fade } from "@material-ui/core/styles";
 import { getMonthDays, getNextDays, getPrevDays } from "../utils";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
   today: {
     color: `${theme.palette.primary.main} !important`
   },
@@ -50,12 +50,19 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Dates({
+interface DatesProps {
+  selectedDates: any[];
+  currentDate: Moment;
+  dateUnderSelection: Moment;
+  onDateClicked: (date: Moment) => void;
+}
+
+const Dates: FC<DatesProps> = ({
   selectedDates,
   currentDate,
   dateUnderSelection,
   onDateClicked
-}) {
+}) => {
   const classes = useStyles();
 
   const monthDays = useMemo(() => {
@@ -66,15 +73,15 @@ function Dates({
     ];
   }, [currentDate]);
 
-  const isOutOfMonthDay = day => {
+  const isOutOfMonthDay = (day: Moment) => {
     return day.month() !== currentDate.month();
   };
 
-  const isToday = day => {
+  const isToday = (day: Moment) => {
     return day.date() === moment().date() && day.month() === moment().month();
   };
 
-  const isUnderSelection = day => {
+  const isUnderSelection = (day: Moment) => {
     return day.isSame(dateUnderSelection);
   };
 
@@ -106,6 +113,6 @@ function Dates({
       ))}
     </Box>
   );
-}
+};
 
 export default Dates;

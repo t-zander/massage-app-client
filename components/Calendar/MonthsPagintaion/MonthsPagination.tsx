@@ -1,5 +1,5 @@
-import React, { useMemo } from "react";
-import moment from "moment";
+import React, { FC, useMemo } from "react";
+import moment, { Moment } from "moment";
 import { Box, makeStyles } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import LeftArrowIcon from "@material-ui/icons/ChevronLeft";
@@ -19,7 +19,17 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function MonthsPagination({ currentDate, goToPrevMonth, goToNextMonth }) {
+interface MonthsPaginationProps {
+  currentDate: Moment;
+  goToPrevMonth: () => void;
+  goToNextMonth: () => void;
+}
+
+const MonthsPagination: FC<MonthsPaginationProps> = ({
+  currentDate,
+  goToPrevMonth,
+  goToNextMonth
+}) => {
   const classes = useStyles();
 
   const currentMonth = useMemo(() => {
@@ -47,6 +57,6 @@ function MonthsPagination({ currentDate, goToPrevMonth, goToNextMonth }) {
       </IconButton>
     </Box>
   );
-}
+};
 
 export default MonthsPagination;

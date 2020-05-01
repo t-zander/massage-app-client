@@ -1,7 +1,7 @@
-import { StepConnector } from "@material-ui/core";
+import { StepConnector, Theme } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
 
-const Connector = withStyles(theme => ({
+const Connector = withStyles((theme: Theme) => ({
   alternativeLabel: {
     top: 10,
     left: "calc(-50% + 16px)",

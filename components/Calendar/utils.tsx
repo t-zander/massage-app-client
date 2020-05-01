@@ -1,9 +1,6 @@
-/**
- * Date is moment.js date
- *
- * @param {Date} currentDate
- */
-export function getPrevDays(currentDate) {
+import { Moment } from "moment";
+
+export function getPrevDays(currentDate: Moment) {
   /*
     isoWeekday will make Monday - 1st day
   */
@@ -25,12 +22,7 @@ export function getPrevDays(currentDate) {
   return [];
 }
 
-/**
- * Date is moment.js date
- *
- * @param {Date} currentDate
- */
-export function getMonthDays(currentDate) {
+export function getMonthDays(currentDate: Moment) {
   return [...Array(currentDate.daysInMonth())].map((_, index) => {
     return currentDate
       .clone()
@@ -39,12 +31,7 @@ export function getMonthDays(currentDate) {
   });
 }
 
-/**
- * Date is moment.js date
- *
- * @param {Date} currentDate
- */
-export function getNextDays(currentDate) {
+export function getNextDays(currentDate: Moment) {
   const daysToFullWeek =
     7 -
     currentDate

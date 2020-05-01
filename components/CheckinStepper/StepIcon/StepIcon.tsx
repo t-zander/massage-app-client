@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/styles";
+import React, {FC} from "react";
+import {makeStyles} from "@material-ui/styles";
 import clsx from "clsx";
+import {Theme} from "@material-ui/core";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     color: theme.palette.grey[100],
     display: "flex",
@@ -28,9 +28,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const StepIcon = props => {
+interface StepIconProps {
+  active: boolean;
+  completed: boolean;
+}
+
+const StepIcon: FC<StepIconProps> = ({ active, completed }) => {
   const classes = useStyles();
-  const { active, completed } = props;
 
   return (
     <div
@@ -41,11 +45,6 @@ const StepIcon = props => {
       <div className={completed ? classes.completed : classes.circle} />
     </div>
   );
-};
-
-StepIcon.propTypes = {
-  active: PropTypes.bool,
-  completed: PropTypes.bool
 };
 
 export default StepIcon;

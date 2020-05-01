@@ -1,10 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "@material-ui/core";
+import React, { ReactElement } from "react";
+import { Link, Theme } from "@material-ui/core";
 import NextLink from "next/link";
 import { makeStyles } from "@material-ui/styles";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     transition: "color .4s",
     color: theme.palette.primary.contrastText,
@@ -17,7 +16,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const NavbarLink = ({ href, children }) => {
+interface NavbarLinkProps {
+  href: string;
+  children: ReactElement | string;
+}
+
+const NavbarLink: React.FC<NavbarLinkProps> = ({ href, children }) => {
   const classes = useStyles();
 
   return (
@@ -27,11 +31,6 @@ const NavbarLink = ({ href, children }) => {
       </Link>
     </NextLink>
   );
-};
-
-NavbarLink.propTypes = {
-  href: PropTypes.string.isRequired,
-  children: PropTypes.node
 };
 
 export default NavbarLink;

@@ -1,12 +1,11 @@
 import React from "react";
 import moment from "moment";
-import { Box, makeStyles } from "@material-ui/core";
-import clsx from "clsx";
+import { Box, makeStyles, Theme } from "@material-ui/core";
 
 const localLocale = moment();
 localLocale.locale("ru");
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
   weekDay: {
     fontWeight: "bold",
     margin: 0
@@ -25,9 +24,9 @@ function WeekDays() {
     <Box className={classes.calendarGrid}>
       {localLocale
         .localeData()
-        .weekdaysMin(true)
-        .map(dayName => (
-          <p key={dayName} className={clsx(classes.gridItem, classes.weekDay)}>
+        .weekdaysMin()
+        .map((dayName: string) => (
+          <p key={dayName} className={classes.weekDay}>
             {dayName}
           </p>
         ))}

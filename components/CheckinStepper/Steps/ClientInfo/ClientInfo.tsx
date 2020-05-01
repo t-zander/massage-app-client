@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { FormControl, InputLabel, Input } from "@material-ui/core";
+import React, { ChangeEvent, FC } from "react";
+import { FormControl, Input, InputLabel } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
-    paddding: "2rem",
+    padding: "2rem",
     justifyContent: "center"
   },
   form: {
@@ -17,10 +16,24 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const ClientInfo = ({ name, surname, phoneNumber, handleInputChange }) => {
+interface ClientInfoProps {
+  name: string;
+  surname: string;
+  phoneNumber: string;
+  handleInputChange: (prop: string, value: string) => void;
+}
+
+const ClientInfo: FC<ClientInfoProps> = ({
+  name,
+  surname,
+  phoneNumber,
+  handleInputChange
+}) => {
   const classes = useStyles();
 
-  const onInputChange = prop => e => {
+  const onInputChange = (prop: string) => (
+    e: ChangeEvent<HTMLInputElement>
+  ) => {
     handleInputChange(prop, e.target.value);
   };
 
@@ -51,7 +64,5 @@ const ClientInfo = ({ name, surname, phoneNumber, handleInputChange }) => {
     </div>
   );
 };
-
-ClientInfo.propTypes = {};
 
 export default ClientInfo;
