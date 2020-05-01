@@ -15,7 +15,7 @@ export default createMuiTheme({
     }
   },
   typography: {
-    fontFamily: ["'Source Serif Pro', serif"].join(","),
+    fontFamily: ["Roboto", "serif"].join(","),
     fontSize: 16
   },
   overrides: {

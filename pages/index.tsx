@@ -1,28 +1,10 @@
 import React from "react";
-import { withApollo } from "../lib/apollo";
-import { gql } from "apollo-boost";
-import { useQuery } from "@apollo/react-hooks";
-import { Typography, Box, Icon } from "@material-ui/core";
+import {Box, Icon, Theme, Typography} from "@material-ui/core";
 import Layout from "../components/Layout/Layout";
 import { makeStyles } from "@material-ui/styles";
 import clsx from "clsx";
 
-const GET_COMMENTS = gql`
-  {
-    comments {
-      author
-      content
-    }
-  }
-`;
-
-const useStyles = makeStyles(theme => ({
-  /* content: {
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center"
-  }, */
+const useStyles = makeStyles((theme: Theme) => ({
   banner: {
     width: "100%",
     borderTop: `4px solid ${theme.palette.primary.dark}`,
@@ -83,4 +65,4 @@ const Home = () => {
   );
 };
 
-export default withApollo(Home);
+export default Home;

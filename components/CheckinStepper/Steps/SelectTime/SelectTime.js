@@ -1,17 +1,6 @@
-import { useTheme } from "@material-ui/core/styles";
 import Calendar from "../../../Calendar/Calendar";
-import { useState } from "react";
-import {
-  Typography,
-  FormControl,
-  FormLabel,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-  Box,
-  Chip
-} from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
+import { Box, Typography } from "@material-ui/core";
 import SelectedDateInfo from "./SelectedDayInfo/SelectedDayInfo";
 
 const SelectTime = ({ selectedDays, handleDateChange }) => {

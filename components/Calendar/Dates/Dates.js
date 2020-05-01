@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Dates({
+export default function Dates({
   selectedDates,
   currentDate,
   dateUnderSelection,
@@ -107,5 +107,3 @@ function Dates({
     </Box>
   );
 }
-
-export default Dates;
