@@ -22,7 +22,9 @@ const NavbarLink = ({ href, children }) => {
 
   return (
     <NextLink href={href}>
-      <Link className={classes.root}>{children}</Link>
+      <Link className={classes.root} href={href}>
+        {children}
+      </Link>
     </NextLink>
   );
 };

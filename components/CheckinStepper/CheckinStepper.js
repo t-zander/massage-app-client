@@ -10,28 +10,28 @@ import SelectTime from "./Steps/SelectTime/SelectTime";
 import CheckAllInfo from "./Steps/CheckAllInfo/CheckAllInfo";
 import Navigation from "./Navigation/Navigation";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(2, 2),
-    backgroundColor: fade(theme.palette.secondary.main, 0.8),
+    backgroundColor: fade(theme.palette.secondary.main, 0.8)
   },
   content: {
     width: "100%",
-    borderRadius: "10px",
+    borderRadius: "10px"
   },
   stepper: {
-    backgroundColor: "transparent",
+    backgroundColor: "transparent"
   },
   button: {
-    marginRight: theme.spacing(1),
+    marginRight: theme.spacing(1)
   },
   instructions: {
     marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
+    marginBottom: theme.spacing(1)
   },
   completedText: {
-    color: theme.palette.primary.light,
-  },
+    color: theme.palette.primary.light
+  }
 }));
 
 const steps = ["представьтесь", "выберите дату и время", "проверьте данные"];
@@ -41,13 +41,13 @@ const CheckinStepper = () => {
     name: "",
     surname: "",
     phoneNumber: "",
-    selectedDays: [],
+    selectedDays: []
   });
 
   const handleInputChange = (prop, value) => {
     setStepperState({
       ...stepperState,
-      [prop]: value,
+      [prop]: value
     });
   };
 
@@ -62,18 +62,18 @@ const CheckinStepper = () => {
       selectedDays={stepperState.selectedDays}
       handleDateChange={handleInputChange}
     />,
-    <CheckAllInfo />,
+    <CheckAllInfo />
   ];
 
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(1);
 
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setActiveStep(prevActiveStep => prevActiveStep + 1);
   };
 
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    setActiveStep(prevActiveStep => prevActiveStep - 1);
   };
   return (
     <div className={classes.root}>
