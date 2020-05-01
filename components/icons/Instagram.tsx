@@ -1,6 +1,7 @@
 import { makeStyles, SvgIcon } from "@material-ui/core";
 import clsx from "clsx";
-import React from "react";
+import React, { FC } from "react";
+import { IconComponentProps } from "./IconComponentProps";
 
 const useStyles = makeStyles(theme => ({
   instagramGradient: {
@@ -12,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Instagram({ className = "" }) {
+const Instagram: FC<IconComponentProps> = ({ className = "" }) => {
   const classes = useStyles();
   return (
     <SvgIcon
@@ -44,9 +45,9 @@ function Instagram({ className = "" }) {
           y2="1.55608"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FFC107" />
-          <stop offset="0.507" stop-color="#F44336" />
-          <stop offset="0.99" stop-color="#9C27B0" />
+          <stop stopColor="#FFC107" />
+          <stop offset="0.507" stopColor="#F44336" />
+          <stop offset="0.99" stopColor="#9C27B0" />
         </linearGradient>
       </defs>
 
@@ -63,6 +64,6 @@ function Instagram({ className = "" }) {
       </g>
     </SvgIcon>
   );
-}
+};
 
 export default Instagram;

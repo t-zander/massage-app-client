@@ -1,27 +1,28 @@
-import React, { useState, useMemo, useEffect } from "react";
-import { makeStyles, Box } from "@material-ui/core";
-import LeftArrowIcon from "@material-ui/icons/ChevronLeft";
-import RightArrowIcon from "@material-ui/icons/ChevronRight";
-import IconButton from "@material-ui/core/IconButton";
-import moment from "moment";
-import { fade, ThemeProvider } from "@material-ui/core/styles";
-import clsx from "clsx";
+import React, { FC, useState } from "react";
+import { Box, makeStyles, Theme } from "@material-ui/core";
+import moment, { Moment } from "moment";
 import WeekDays from "./WeekDays/WeekDays";
 import Dates from "./Dates/Dates";
 import MonthsPagination from "./MonthsPagintaion/MonthsPagination";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     width: "24rem",
     padding: theme.spacing(1)
   }
 }));
 
-export default function Calendar({
+interface CalendarProps {
+  selectedDates: any[];
+  dateUnderSelection: Moment;
+  handleDateClicked: (date: Moment) => void;
+}
+
+const Calendar: FC<CalendarProps> = ({
   selectedDates,
   dateUnderSelection,
   handleDateClicked
-}) {
+}) => {
   const classes = useStyles();
 
   const [calendarState, setCalendarState] = useState(() => {
@@ -33,7 +34,7 @@ export default function Calendar({
   const handleGoToPrevMonth = () => {
     setCalendarState({
       ...calendarState,
-      // moment objects are mutable, so need to clone it for react to detect chanes
+      // moment objects are mutable, so need to clone it for react to detect changes
       currentDate: calendarState.currentDate.clone().subtract(1, "M")
     });
   };
@@ -41,7 +42,7 @@ export default function Calendar({
   const handleGoToNextMonth = () => {
     setCalendarState({
       ...calendarState,
-      // moment objects are mutable, so need to clone it for react to detect chanes
+      // moment objects are mutable, so need to clone it for react to detect changes
       currentDate: calendarState.currentDate.clone().add(1, "M")
     });
   };
@@ -64,4 +65,6 @@ export default function Calendar({
       </Box>
     </div>
   );
-}
+};
+
+export default Calendar;

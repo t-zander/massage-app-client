@@ -5,47 +5,47 @@ import customTheme from "../customTheme";
 import { AppProps } from "next/app";
 import { DocumentContext } from "next/dist/next-server/lib/utils";
 
-const MyDocument = () => {
-  return (
-    <html lang="ru">
-      <Head>
-        <meta charSet="utf-8" />
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-        />
-        {/* PWA primary color */}
-        <meta name="theme-color" content={customTheme.palette.primary.main} />
-        {/* <link
+export default class MyDocument extends Document {
+  render() {
+    return (
+      <html lang="ru">
+        <Head>
+          <meta charSet="utf-8" />
+          <meta
+            name="viewport"
+            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+          />
+          {/* PWA primary color */}
+          <meta name="theme-color" content={customTheme.palette.primary.main} />
+          {/* <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           /> */}
-        <link
-          href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap"
-          rel="stylesheet"
-        ></link>
-        <link
-          href="https://fonts.googleapis.com/css?family=Marck+Script&display=swap"
-          rel="stylesheet"
-        ></link>
-        <link
-          href="https://fonts.googleapis.com/css?family=Source+Serif+Pro&display=swap"
-          rel="stylesheet"
-        ></link>
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
-        />
-      </Head>
-      <body>
-        <Main />
-        <NextScript />
-      </body>
-    </html>
-  );
-};
-
-export default MyDocument;
+          <link
+            href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap"
+            rel="stylesheet"
+          ></link>
+          <link
+            href="https://fonts.googleapis.com/css?family=Marck+Script&display=swap"
+            rel="stylesheet"
+          ></link>
+          <link
+            href="https://fonts.googleapis.com/css?family=Source+Serif+Pro&display=swap"
+            rel="stylesheet"
+          ></link>
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+          />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </html>
+    );
+  }
+}
 
 MyDocument.getInitialProps = async (ctx: DocumentContext) => {
   // Resolution order

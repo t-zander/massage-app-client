@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { makeStyles, fade } from "@material-ui/core/styles";
+import { makeStyles, fade, Theme } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
@@ -10,7 +10,7 @@ import SelectTime from "./Steps/SelectTime/SelectTime";
 import CheckAllInfo from "./Steps/CheckAllInfo/CheckAllInfo";
 import Navigation from "./Navigation/Navigation";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     padding: theme.spacing(2, 2),
     backgroundColor: fade(theme.palette.secondary.main, 0.8)
@@ -44,7 +44,7 @@ const CheckinStepper = () => {
     selectedDays: []
   });
 
-  const handleInputChange = (prop, value) => {
+  const handleInputChange = (prop: string, value: string) => {
     setStepperState({
       ...stepperState,
       [prop]: value
@@ -66,7 +66,7 @@ const CheckinStepper = () => {
   ];
 
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(1);
+  const [activeStep, setActiveStep] = useState(1);
 
   const handleNext = () => {
     setActiveStep(prevActiveStep => prevActiveStep + 1);

@@ -1,11 +1,21 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { FC } from "react";
 
-import { Button, Box, useMediaQuery } from "@material-ui/core";
+import { Box, Button } from "@material-ui/core";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 
-const Navigation = ({ handleBack, handleNext, activeStep, stepsAmt }) => {
+interface NavigationProps {
+  handleBack: () => void;
+  handleNext: () => void;
+  activeStep: number;
+  stepsAmt: number;
+}
+const Navigation: FC<NavigationProps> = ({
+  handleBack,
+  handleNext,
+  activeStep,
+  stepsAmt
+}) => {
   return (
     <Box display="flex" justifyContent="space-around">
       <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
@@ -23,7 +33,5 @@ const Navigation = ({ handleBack, handleNext, activeStep, stepsAmt }) => {
     </Box>
   );
 };
-
-Navigation.propTypes = {};
 
 export default Navigation;
