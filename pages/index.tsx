@@ -1,5 +1,5 @@
 import React from "react";
-import {Box, Icon, Theme, Typography} from "@material-ui/core";
+import { Box, Icon, Theme, Typography } from "@material-ui/core";
 import Layout from "../components/Layout/Layout";
 import { makeStyles } from "@material-ui/styles";
 import clsx from "clsx";

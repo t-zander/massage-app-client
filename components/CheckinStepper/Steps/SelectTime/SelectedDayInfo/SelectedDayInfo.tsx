@@ -1,8 +1,8 @@
-import React, {FC, useMemo} from "react";
+import React, { FC, useMemo } from "react";
 import { fade, Typography } from "@material-ui/core";
 import { List, ListItem, ListItemText, Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import {Moment} from "moment";
+import { Moment } from "moment";
 
 const mockTimes = [
   "08:00 - 09-00",
@@ -11,12 +11,15 @@ const mockTimes = [
   "13:00 - 14:00"
 ];
 
-interface  SelectedDateInfoProps {
+interface SelectedDateInfoProps {
   selectedDate: Moment;
   handleTimeSelected: () => void;
 }
 
-const SelectedDateInfo:FC<SelectedDateInfoProps> = ({ selectedDate, handleTimeSelected }) => {
+const SelectedDateInfo: FC<SelectedDateInfoProps> = ({
+  selectedDate,
+  handleTimeSelected
+}) => {
   const selectedDateFormatted = useMemo(() => {
     return selectedDate.clone().format("dddd, D MMMM");
   }, [selectedDate]);
@@ -43,6 +46,6 @@ const SelectedDateInfo:FC<SelectedDateInfoProps> = ({ selectedDate, handleTimeSe
       </List>
     </div>
   );
-}
+};
 
 export default SelectedDateInfo;
