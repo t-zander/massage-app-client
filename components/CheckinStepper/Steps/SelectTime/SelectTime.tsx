@@ -24,7 +24,7 @@ const SelectTime: FC<SelectTimeProps> = ({
       : setDateUnderSelection(date);
   };
 
-  const handleTimeSelected = (time: any) => {
+  const handleTimeSelected = () => {
     setSelectedDates([...selectedDates, dateUnderSelection]);
     setDateUnderSelection(null);
   };
