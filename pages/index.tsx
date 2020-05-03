@@ -3,6 +3,8 @@ import { Box, Icon, Theme, Typography } from "@material-ui/core";
 import Layout from "../components/Layout/Layout";
 import { makeStyles } from "@material-ui/styles";
 import clsx from "clsx";
+import { withRedux } from "../lib/redux";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme: Theme) => ({
   banner: {
@@ -35,7 +37,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const Home = () => {
   const classes = useStyles();
-
   return (
     <Layout backgroundUrl="/img/background.png">
       <Box className={classes.banner} textAlign="center">

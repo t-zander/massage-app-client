@@ -1,7 +1,11 @@
 import React, { FC, useMemo } from "react";
-import { fade, Typography } from "@material-ui/core";
-import { List, ListItem, ListItemText, Divider } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import {
+  Divider,
+  List,
+  ListItem,
+  ListItemText,
+  Typography
+} from "@material-ui/core";
 import { Moment } from "moment";
 
 const mockTimes = [
