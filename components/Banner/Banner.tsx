@@ -11,9 +11,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundPosition: "center center",
     display: "flex",
     alignItems: "center",
-    backgroundColor: "#242132",
+    backgroundColor: "#3b3650",
     background: `url(img/background-home.png)`,
-    backgroundBlendMode: "overlay"
+    backgroundBlendMode: "overlay",
   },
   info: {
     width: "40%",
@@ -21,16 +21,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    overflowX: "hidden"
+    overflowX: "hidden",
   },
   divider: {
     width: "100%",
     height: "4px",
-    background: theme.palette.primary.dark
+    background: theme.palette.primary.dark,
   },
   appointmentBtn: {
     marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2)
+    marginBottom: theme.spacing(2),
   },
   callNowText: {
     color: theme.palette.primary.main,
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: "100%",
       borderBottom: `solid 1px ${theme.palette.primary.main}`,
       position: "absolute",
-      left: "100%"
+      left: "100%",
     },
     "&:before": {
       content: '" "',
@@ -53,8 +53,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: "100%",
       borderBottom: `solid 1px ${theme.palette.primary.main}`,
       position: "absolute",
-      right: "100%"
-    }
+      right: "100%",
+    },
   },
   phone: {
     fontSize: theme.typography.h6.fontSize,
@@ -63,9 +63,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     textDecoration: "none",
     "&:hover": {
       textDecoration: "none",
-      color: theme.palette.primary.main
-    }
-  }
+      color: theme.palette.primary.main,
+    },
+  },
 }));
 
 interface BannerProps {

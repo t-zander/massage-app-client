@@ -5,15 +5,15 @@ import { makeStyles } from "@material-ui/styles";
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     backgroundColor: theme.palette.secondary.dark,
-    padding: theme.spacing(6, 4)
-  }
+    padding: theme.spacing(6, 4),
+  },
 }));
 
 const offers = [
   "насладиться расслабляющим массажем",
   "получить помощь в выборе нужного типа массажа",
   "записаться на пробное посещение",
-  "посещать сеанс в масажном кабинете или не выходя из дома"
+  "посещать сеанс в масажном кабинете или не выходя из дома",
 ];
 
 const WhatWeOffer = () => {
@@ -27,16 +27,11 @@ const WhatWeOffer = () => {
         {offers.map((offer, index) => (
           <Box key={index} display="flex" marginY={1}>
             <img
-              src="/img/check.svg"
+              src="/img/check-mark.svg"
               alt="check mark"
               style={{ marginRight: "10px", width: 20 }}
             />
-            <Typography
-              key={index}
-              variant="body2"
-              align="left"
-              color="primary"
-            >
+            <Typography key={index} variant="h6" align="left" color="primary">
               {offer}
             </Typography>
           </Box>

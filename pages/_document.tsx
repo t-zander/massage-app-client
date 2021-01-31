@@ -1,5 +1,5 @@
 import React from "react";
-import Document, { Head, Main, NextScript } from "next/document";
+import Document, { Head, Html, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/core/styles";
 import customTheme from "../customTheme";
 import { AppProps } from "next/app";
@@ -8,7 +8,7 @@ import { DocumentContext } from "next/dist/next-server/lib/utils";
 export default class MyDocument extends Document {
   render() {
     return (
-      <html lang="ru">
+      <Html lang="ru">
         <Head>
           <meta charSet="utf-8" />
           <meta
@@ -42,7 +42,7 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
@@ -77,7 +77,7 @@ MyDocument.getInitialProps = async (ctx: DocumentContext) => {
   ctx.renderPage = () =>
     originalRenderPage({
       enhanceApp: (App: any) => (props: AppProps) =>
-        sheets.collect(<App {...props} />)
+        sheets.collect(<App {...props} />),
     });
 
   const initialProps = await Document.getInitialProps(ctx);
@@ -87,7 +87,7 @@ MyDocument.getInitialProps = async (ctx: DocumentContext) => {
     // Styles fragment is rendered after the app and page rendering finish.
     styles: [
       ...React.Children.toArray(initialProps.styles),
-      sheets.getStyleElement()
-    ]
+      sheets.getStyleElement(),
+    ],
   };
 };
