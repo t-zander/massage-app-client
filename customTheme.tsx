@@ -2,39 +2,50 @@ import { createMuiTheme } from "@material-ui/core";
 
 export default createMuiTheme({
   palette: {
+    type: "dark",
     primary: {
-      main: "#B5435A",
-      dark: "#974A5E"
+      main: "#FF7E99",
+      dark: "#D9516E",
+      contrastText: "#fff",
     },
     secondary: {
-      main: "#242132",
-      contrastText: "#ffffff"
+      main: "#5D567B",
+      dark: "#242132",
+      contrastText: "#fff",
     },
-    text: {
-      primary: "#FFFFFF"
-    }
   },
   typography: {
     fontFamily: ["Roboto", "serif"].join(","),
-    fontSize: 16
+    fontSize: 16,
   },
   overrides: {
     MuiTypography: {},
+    MuiDialog: {
+      container: {
+        backgroundColor: "rgba(0, 0, 0, 0.35)",
+      },
+      paper: {
+        background: `linear-gradient(315deg, #39344F 0%, #5D567B 100%)`,
+      },
+    },
+    MuiButton: {
+      label: {
+        textTransform: "none",
+      },
+    },
     MuiDialogTitle: {
-      root: {
-        color: "#000"
-      }
+      root: {},
     },
     MuiDrawer: {
       paper: {
-        background: "#242132",
-        minWidth: 300
-      }
+        /*background: "#242132",*/
+        minWidth: 300,
+      },
     },
     MuiDivider: {
       root: {
-        backgroundColor: "#ffffff"
-      }
-    }
-  }
+        /*backgroundColor: "#ffffff"*/
+      },
+    },
+  },
 });

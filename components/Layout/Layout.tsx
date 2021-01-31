@@ -1,4 +1,4 @@
-import { Container, Drawer, IconButton, Theme } from "@material-ui/core";
+import { Drawer, IconButton, Theme, Box } from "@material-ui/core";
 import CloseMenuIcon from "@material-ui/icons/Close";
 import { makeStyles } from "@material-ui/styles";
 import React, { FC, ReactElement, useState } from "react";
@@ -7,16 +7,6 @@ import Navbar from "../Navbar/Navbar";
 import NavbarLink from "../Navbar/NavbarLink/NavbarLink";
 
 const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    minHeight: "100vh",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    backgroundPosition: "center center",
-    backgroundBlendMode: "overlay",
-    background: "#242132",
-    display: "flex",
-    flexDirection: "column"
-  },
   closeIcon: {
     alignSelf: "flex-end"
   },
@@ -26,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexDirection: "column"
   },
   navbarContent: {
-    padding: theme.spacing(2),
+    // padding: theme.spacing(2),
     display: "flex",
     flexDirection: "column"
   }
@@ -34,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 interface LayoutProps {
   children: ReactElement | ReactElement[];
-  backgroundUrl: string;
+  backgroundUrl?: string;
 }
 
 const Layout: FC<LayoutProps> = ({ children, backgroundUrl }) => {
@@ -50,11 +40,8 @@ const Layout: FC<LayoutProps> = ({ children, backgroundUrl }) => {
   };
 
   return (
-    <div
-      className={classes.root}
-      style={{ backgroundImage: `url(${backgroundUrl})` }}
-    >
-      <Drawer variant="temporary" open={isDrawerOpen} onClose={onCloseDrawer}>
+    <div>
+      {/*<Drawer variant="temporary" open={isDrawerOpen} onClose={onCloseDrawer}>
         <div className={classes.navbarContent}>
           <IconButton
             color="inherit"
@@ -75,11 +62,9 @@ const Layout: FC<LayoutProps> = ({ children, backgroundUrl }) => {
           <hr style={{ width: "100%" }} />
         </div>
       </Drawer>
-      <Navbar onOpenDrawer={onOpenDrawer} />
+      <Navbar onOpenDrawer={onOpenDrawer} />*/}
 
-      <Container maxWidth="lg" className={classes.content}>
-        {children}
-      </Container>
+      <Box className={classes.content}>{children}</Box>
       <Footer />
     </div>
   );
