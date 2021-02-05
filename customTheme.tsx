@@ -10,7 +10,7 @@ export default createMuiTheme({
     },
     secondary: {
       main: "#5D567B",
-      dark: "#242132",
+      dark: "#3E3955",
       contrastText: "#fff",
     },
   },
@@ -45,6 +45,12 @@ export default createMuiTheme({
     MuiDivider: {
       root: {
         /*backgroundColor: "#ffffff"*/
+      },
+    },
+    MuiCard: {
+      root: {
+        background: "#726AA0",
+        boxShadow: "6px 10px 14px #242132",
       },
     },
   },

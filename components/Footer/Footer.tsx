@@ -3,7 +3,7 @@ import {
   Container,
   IconButton,
   Theme,
-  Typography
+  Typography,
 } from "@material-ui/core";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TelegramIcon from "@material-ui/icons/Telegram";
@@ -15,20 +15,20 @@ import clsx from "clsx";
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     padding: theme.spacing(1, 0),
-    background: "rgba(36, 33, 50, 0.7)",
+    background: "#2B283E",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
   },
   telegramIcon: {
     "&:hover": {
-      fill: "#20A0E1"
-    }
+      fill: "#20A0E1",
+    },
   },
   facebookIcon: {
     "&:hover": {
-      fill: "#157DC3"
-    }
+      fill: "#157DC3",
+    },
   },
   phone: {
     textDecoration: "none",
@@ -36,19 +36,19 @@ const useStyles = makeStyles((theme: Theme) => ({
     transition: "color .4s",
     color: theme.palette.primary.contrastText,
     "&:hover": {
-      color: theme.palette.primary.main
-    }
+      color: theme.palette.primary.main,
+    },
   },
   container: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: theme.spacing(1)
+    marginBottom: theme.spacing(1),
   },
   icon: {
     transition: "0.5s",
-    cursor: "pointer"
-  }
+    cursor: "pointer",
+  },
 }));
 
 const Footer: FC = () => {
@@ -58,7 +58,6 @@ const Footer: FC = () => {
     <footer className={classes.root}>
       <Container className={classes.container} maxWidth="md">
         <Box display="flex" alignItems="center">
-          {/* <PhoneIcon style={{ marginRight: 20 }} /> */}
           <Typography
             variant="h6"
             component="a"

@@ -2,18 +2,18 @@ import React, { FC } from "react";
 import { Box, Button, Link, Theme, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import SocialMedia from "../shared/SocialMedia/SocialMedia";
+import Section from "../Section/Section";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     minHeight: "100vh",
+    position: "relative",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     backgroundPosition: "center center",
     display: "flex",
     alignItems: "center",
-    backgroundColor: "#3b3650",
     background: `url(img/background-home.png)`,
-    backgroundBlendMode: "overlay",
   },
   info: {
     width: "40%",
@@ -76,7 +76,7 @@ const Banner: FC<BannerProps> = ({ onShowAppointmentModal }) => {
   const classes = useStyles();
 
   return (
-    <Box className={classes.root} textAlign="center">
+    <Section textAlign="center" className={classes.root}>
       <Box className={classes.info}>
         <Box className={classes.divider} marginY={3} />
         <Typography variant="h4" component="h4" gutterBottom>
@@ -106,7 +106,7 @@ const Banner: FC<BannerProps> = ({ onShowAppointmentModal }) => {
         <Box className={classes.divider} marginY={3} />
         <SocialMedia />
       </Box>
-    </Box>
+    </Section>
   );
 };
 

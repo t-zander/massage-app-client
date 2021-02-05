@@ -4,6 +4,7 @@ import AppointmentModal from "../components/AppointmentModal/AppointmentModal";
 import Banner from "../components/Banner/Banner";
 import WhatWeOffer from "../components/WhatWeOffer/WhatWeOffer";
 import { AppointmentModalProps } from "../components/AppointmentModal/AppointmentModal";
+import MassageTypes from "../components/MassageTypes/MassageTypes";
 
 const Home = () => {
   const [appointmentModalOpen, setAppointmentModalOpen] = useState(false);
@@ -27,6 +28,7 @@ const Home = () => {
     <Layout>
       <Banner onShowAppointmentModal={onShowAppointmentModal} />
       <WhatWeOffer />
+      <MassageTypes />
       <AppointmentModal
         open={appointmentModalOpen}
         onClose={onHideAppointmentModal}

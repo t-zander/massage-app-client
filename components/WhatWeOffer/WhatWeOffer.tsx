@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Theme, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
+import Section from "../Section/Section";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -19,8 +20,8 @@ const offers = [
 const WhatWeOffer = () => {
   const classes = useStyles();
   return (
-    <Box className={classes.root}>
-      <Typography variant="h4" align="center" gutterBottom>
+    <Section className={classes.root}>
+      <Typography variant="h4" align="center" gutterBottom color="primary">
         С нами вы сможете
       </Typography>
       <Box width="fit-content" margin="0 auto">
@@ -31,13 +32,13 @@ const WhatWeOffer = () => {
               alt="check mark"
               style={{ marginRight: "10px", width: 20 }}
             />
-            <Typography key={index} variant="h6" align="left" color="primary">
+            <Typography key={index} variant="h6" align="left">
               {offer}
             </Typography>
           </Box>
         ))}
       </Box>
-    </Box>
+    </Section>
   );
 };
 
