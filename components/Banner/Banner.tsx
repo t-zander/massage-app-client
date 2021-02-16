@@ -3,6 +3,7 @@ import { Box, Button, Link, Theme, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import SocialMedia from "../shared/SocialMedia/SocialMedia";
 import Section from "../Section/Section";
+import ButtonLink from "../Links/ButtonLink";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -68,11 +69,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface BannerProps {
-  onShowAppointmentModal: () => void;
-}
-
-const Banner: FC<BannerProps> = ({ onShowAppointmentModal }) => {
+const Banner = () => {
   const classes = useStyles();
 
   return (
@@ -87,14 +84,14 @@ const Banner: FC<BannerProps> = ({ onShowAppointmentModal }) => {
         </Typography>
 
         <Typography>Оставьте ваши данные - и мы вам перезвоним</Typography>
-        <Button
+        <ButtonLink
+          href="/appointment"
           color="inherit"
           variant="outlined"
           className={classes.appointmentBtn}
-          onClick={onShowAppointmentModal}
         >
           Записаться
-        </Button>
+        </ButtonLink>
 
         <Typography className={classes.callNowText} gutterBottom>
           Или позвоните нам прямо сейчас

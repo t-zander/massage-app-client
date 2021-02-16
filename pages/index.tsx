@@ -26,7 +26,7 @@ const Home = () => {
 
   return (
     <Layout>
-      <Banner onShowAppointmentModal={onShowAppointmentModal} />
+      <Banner />
       <WhatWeOffer />
       <MassageTypes />
       <AppointmentModal
