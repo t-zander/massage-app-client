@@ -8,6 +8,7 @@ import Section from '../components/Section/Section';
 import ruLocale from 'date-fns/locale/ru';
 import MuiStaticCalendarWrapper from '../components/MuiStaticCalendarWrapper/MuiStaticCalendarWrapper';
 import AvailableTimeForDate from '../components/AvailableTimeForDate/AvailableTimeForDate';
+import { AvailableTimePeriod } from '../components/AvailableTimeForDate/helpers';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -25,13 +26,21 @@ interface BannerProps {
 
 const Appointment: FC = () => {
   const [date, setDate] = useState(new Date());
+  const [selectedDates, setSelectedDates] = useState([]);
+
   const classes = useStyles();
+
+  const onSelectTime = (timePeriod: AvailableTimePeriod) => {
+    console.log('timePeriod', timePeriod);
+    setSelectedDates([...selectedDates, timePeriod]);
+  };
 
   return (
     <Layout>
       <Section className={classes.root}>
         <Box display="flex">
           <MuiStaticCalendarWrapper>
+            {/*TODO: render selected days differently*/}
             <DatePicker
               disablePast
               className={classes.datePicker}
@@ -43,7 +52,12 @@ const Appointment: FC = () => {
             />
           </MuiStaticCalendarWrapper>
 
-          {date && <AvailableTimeForDate selectedDate={date} />}
+          {date && (
+            <AvailableTimeForDate
+              selectedDate={date}
+              onSelectTime={onSelectTime}
+            />
+          )}
         </Box>
       </Section>
     </Layout>

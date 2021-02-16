@@ -1,30 +1,22 @@
 import React, { FC, useState } from 'react';
-import { Box, Card, CardContent } from '@material-ui/core';
+import {
+  Box,
+  Card,
+  CardContent,
+  FormHelperText,
+  Typography
+} from '@material-ui/core';
 import { addHours, format } from 'date-fns';
 import { makeStyles } from '@material-ui/styles';
 import { Theme } from '@material-ui/core/styles';
 import { cardShadow } from '../../customTheme';
+import { ru } from 'date-fns/locale';
+import { AvailableTimePeriod, getMockAvailableTimes } from './helpers';
 
 interface AvailableTimeForDateProps {
   selectedDate: Date;
+  onSelectTime: (selectTimePeriod: AvailableTimePeriod) => void;
 }
-
-const getMockAvailableTimes = () => {
-  const today = new Date();
-  const startDayTime = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDay(),
-    9,
-    0
-  );
-
-  return Array.from(Array(5).keys()).map((_, index) => ({
-    _id: index,
-    startDateTime: addHours(startDayTime, index),
-    endDateTime: addHours(startDayTime, index + 1)
-  }));
-};
 
 const useStyles = makeStyles((theme: Theme) => ({
   timePeriodsContainer: {
@@ -44,19 +36,31 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const AvailableTimeForDate: FC<AvailableTimeForDateProps> = ({
-  selectedDate
+  selectedDate,
+  onSelectTime
 }) => {
   const classes = useStyles();
   const [availableTimePeriods, setAvailableTimePeriods] = useState(
     getMockAvailableTimes
   );
 
+  // TODO: Time periods should be calculated on backend based on massage type
+  // TODO: time periods should have proper date, not only time
   return (
     <Box marginLeft={2} flexGrow={1}>
-      <h2>{selectedDate.toDateString()}</h2>
+      <Typography variant="h5" gutterBottom>
+        Доступное время на {format(selectedDate, 'dd MMMM', { locale: ru })}:
+        <FormHelperText>
+          Выберите время, затем выберите следующую дату сеанса
+        </FormHelperText>
+      </Typography>
       <Box className={classes.timePeriodsContainer}>
         {availableTimePeriods.map((timePeriod, index) => (
-          <Card key={index} className={classes.timePeriodContainer}>
+          <Card
+            key={index}
+            className={classes.timePeriodContainer}
+            onClick={() => onSelectTime(timePeriod)}
+          >
             <CardContent style={{ padding: 16 }}>
               {format(timePeriod.startDateTime, 'HH:mm')} -
               {format(timePeriod.endDateTime, 'HH:mm')}
