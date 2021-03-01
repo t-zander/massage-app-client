@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import {
   Box,
   Card,
@@ -40,16 +40,17 @@ const AvailableTimeForDate: FC<AvailableTimeForDateProps> = ({
   onSelectTime
 }) => {
   const classes = useStyles();
-  const [availableTimePeriods, setAvailableTimePeriods] = useState(
-    getMockAvailableTimes
-  );
+  const [availableTimePeriods, setAvailableTimePeriods] = useState([]);
 
+  useEffect(() => {
+    setAvailableTimePeriods(getMockAvailableTimes(selectedDate));
+  }, [selectedDate]);
   // TODO: Time periods should be calculated on backend based on massage type
   // TODO: time periods should have proper date, not only time
   return (
     <Box marginLeft={2} flexGrow={1}>
       <Typography variant="h5" gutterBottom>
-        Доступное время на {format(selectedDate, 'dd MMMM', { locale: ru })}:
+        Доступное время на {format(selectedDate, 'd MMMM', { locale: ru })}:
         <FormHelperText>
           Выберите время, затем выберите следующую дату сеанса
         </FormHelperText>

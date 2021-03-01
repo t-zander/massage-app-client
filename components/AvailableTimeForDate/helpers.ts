@@ -1,17 +1,16 @@
 import { addHours } from 'date-fns';
 
-export const getMockAvailableTimes = () => {
-  const today = new Date();
+export const getMockAvailableTimes = (date = new Date()) => {
   const startDayTime = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate(),
+    date.getFullYear(),
+    date.getMonth(),
+    date.getDate(),
     9,
     0
   );
 
   return Array.from(Array(5).keys()).map((_, index) => ({
-    id: index + 1,
+    id: date.getTime() + index,
     startDateTime: addHours(startDayTime, index),
     endDateTime: addHours(startDayTime, index + 1)
   }));

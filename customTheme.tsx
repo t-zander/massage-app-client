@@ -15,6 +15,10 @@ export default createMuiTheme({
       main: '#5D567B',
       dark: '#3E3955',
       contrastText: '#fff'
+    },
+    success: {
+      main: '#7DBF87',
+      contrastText: '#fff'
     }
   },
   typography: {
