@@ -1,4 +1,4 @@
-import { Drawer, IconButton, Theme, Box } from '@material-ui/core';
+import { Drawer, IconButton, Theme, Box, BoxProps } from '@material-ui/core';
 import CloseMenuIcon from '@material-ui/icons/Close';
 import { makeStyles } from '@material-ui/styles';
 import React, { FC, ReactElement, useState } from 'react';
@@ -27,7 +27,7 @@ interface LayoutProps {
   backgroundUrl?: string;
 }
 
-const Layout: FC<LayoutProps> = ({ children, backgroundUrl }) => {
+const Layout: FC<LayoutProps & BoxProps> = ({ children, style }) => {
   const classes = useStyles();
   const [isDrawerOpen, setDrawerOpen] = useState(false);
 
@@ -40,7 +40,7 @@ const Layout: FC<LayoutProps> = ({ children, backgroundUrl }) => {
   };
 
   return (
-    <Box display="flex" flexDirection="column" minHeight="100vh">
+    <Box display="flex" flexDirection="column" minHeight="100vh" style={style}>
       <Drawer variant="temporary" open={isDrawerOpen} onClose={onCloseDrawer}>
         <div className={classes.navbarContent}>
           <IconButton

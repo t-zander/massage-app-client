@@ -27,7 +27,7 @@ const SelectedAttendanceDates: FC<SelectedAttendanceDatesProps> = ({
       >
         {selectedAttendanceDates.map(renderSelectedAttendanceDate)}
       </Box>
-      <pre>{JSON.stringify(selectedAttendanceDates, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(selectedAttendanceDates, null, 2)}</pre> */}
     </Box>
   );
 };
